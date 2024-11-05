@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class L2022211817_6_Test {
+public class Solution6Test {
 
     @Test
     public void testPeopleIndexes_EmptyInput() {
