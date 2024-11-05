@@ -1,20 +1,24 @@
 name: tests
 on: push
 jobs:
- run_tests:
-  runs-on: ubuntu-latest
-  steps:
-   - name: Checkout the repository
-     uses: actions/checkout@v2
-   - name: Set up JDK 21
-     uses: actions/setup-java@v1
-     with:
-      java-version: 21
-   - name: Cache Maven packages
-     uses: actions/cache@v2
-     with:
-      path: ~/.m2
-      key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-      restore-keys: ${{ runner.os }}-m2
-   - name: Run tests with Maven
-     run: mvn -B test --file pom.xml
+  run_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v1
+        with:
+          java-version: 21  # 确保此处的 JDK 版本与 pom.xml 文件一致
+
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Run tests with Maven
+        run: mvn -B clean install --file pom.xml  # 运行测试前执行 clean 和 install
+
