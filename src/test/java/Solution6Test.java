@@ -1,8 +1,10 @@
 import org.example.Solution6;
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Solution6Test {
@@ -65,6 +67,37 @@ public class Solution6Test {
                 Arrays.asList("c")
         );
         List<Integer> expected = Arrays.asList(0, 1, 2);
+        List<Integer> result = solution.peopleIndexes(input);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testPeopleIndexes_LargeInput() {
+        Solution6 solution = new Solution6();
+        List<List<String>> input = Arrays.asList(
+                Arrays.asList("a", "b", "c"),
+                Arrays.asList("a", "b"),
+                Arrays.asList("a"),
+                Arrays.asList("d", "e"),
+                Arrays.asList("d"),
+                Arrays.asList("f")
+        );
+        List<Integer> expected = Arrays.asList(0, 3, 5);
+        List<Integer> result = solution.peopleIndexes(input);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void testPeopleIndexes_MultipleSubsets() {
+        Solution6 solution = new Solution6();
+        List<List<String>> input = Arrays.asList(
+                Arrays.asList("company1", "company2"),
+                Arrays.asList("company2"),
+                Arrays.asList("company1"),
+                Arrays.asList("company3", "company4"),
+                Arrays.asList("company4")
+        );
+        List<Integer> expected = Arrays.asList(0, 3);
         List<Integer> result = solution.peopleIndexes(input);
         assertEquals(expected, result);
     }
