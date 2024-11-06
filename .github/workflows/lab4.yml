@@ -20,5 +20,5 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Run tests with Maven
-        run: mvn -B clean install --file pom.xml  # 运行测试前执行 clean 和 install
+        run: mvn -B test --file pom.xml && false
 
